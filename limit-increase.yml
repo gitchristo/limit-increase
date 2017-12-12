@@ -1,3 +1,7 @@
+# multiple main services and sub limit ypes can be handled in one policy
+# one case per main service limit will be created
+# only one of either percent-increase or amount-increase can be used in one policy
+
 policies:
   - name: limit-increase
     resource: account

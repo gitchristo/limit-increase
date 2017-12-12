@@ -1,0 +1,95 @@
+policies:
+  - name: limit-increase
+    resource: account
+#    region: us-east-1
+    filters:
+      - type: service-limit
+        services:
+#          - S3
+          - EC2
+#          - EBS
+#          - ELB
+#          - RDS
+#          - VPC
+#          - CloudFormation
+#          - AutoScaling
+        limits:
+        #   EC2 --------------------
+#          - On-Demand instances - c3.2xlarge
+#          - On-Demand instances - c3.xlarge
+#          - On-Demand instances - c4.2xlarge
+#          - On-Demand instances - c4.large
+#          - On-Demand instances - c4.xlarge
+#          - On-Demand instances - i2.xlarge
+#          - On-Demand instances - m3.2xlarge
+#          - On-Demand instances - m3.large
+#          - On-Demand instances - m3.medium
+#          - On-Demand instances - m3.xlarge
+#          - On-Demand instances - m4.2xlarge
+#          - On-Demand instances - m4.large
+#          - On-Demand instances - m4.xlarge
+#          - On-Demand instances - m4.4xlarge
+#          - On-Demand instances - r3.2xlarge
+#          - On-Demand instances - r3.large
+#          - On-Demand instances - r3.xlarge
+#          - On-Demand instances - r4.2xlarge
+#          - On-Demand instances - r4.4xlarge
+#          - On-Demand instances - r4.large
+#          - On-Demand instances - r4.xlarge
+          - On-Demand instances - t2.xlarge
+#          - On-Demand instances - t2.large
+#          - On-Demand instances - t2.medium
+#          - On-Demand instances - t2.micro
+#          - On-Demand instances - t2.small
+#          - Reserved Instances - purchase limit (monthly)
+        # EBS --------------------
+#          - Active snapshots
+#          - Active volumes
+#          - General Purpose (SSD) volume storage (GiB)
+#          - Magnetic volume storage (GiB)
+        # RDS --------------------
+#          - Clusters
+#          - DB instances
+#          - DB parameter groups
+#          - Event subscriptions
+#          - Option groups
+#          - Read replicas per master
+#          - Storage quota (GB)
+#          - Subnets per subnet group
+#          - DB snapshots per user
+#          - Reserved instances (purchased per month)
+#          - Subnet groups
+        # ELB --------------------
+#          - Active load balancers
+          # CloudFormation
+#          - Stacks
+        # SES --------------------
+#          - Daily sending quota
+        # IAM --------------------
+#          - Groups
+#          - Roles
+#          - Instance profiles
+#          - Policies
+#          - Server certificates
+#          - Users
+        # AutoScaling --------------------
+#          - Auto Scaling groups
+#          - Launch configurations
+        # CloudFormation --------------------
+#          - Stacks
+
+        threshold: 0
+
+    actions:
+      - type: request-limit-increase
+        notify: [christo.adikary@capitalone.com, Ram.Bhandari@capitalone.com]
+        percent-increase: 20
+#        amount-increase: 20
+#        severity:
+
+#        message: "We need to maintain the same service limits between our two active regions for major accounts, enabling us to failover in any situation.
+#        Following will state the region that hit the threshold only, but please raise and match the below account limit(s) in both us-east-1(IAD) and us-west-2(PDX); \n {limits}"
+
+        message: "Please raise the below account limit(s); \n {limits}"
+
+#        message: "TESTing limit increase - Do Not Raise {service} - {limits} by {percent}%"

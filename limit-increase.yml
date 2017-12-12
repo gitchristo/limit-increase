@@ -82,7 +82,7 @@ policies:
         # CloudFormation --------------------
 #          - Stacks
 
-        threshold: 0
+        threshold: 80
 
     actions:
       - type: request-limit-increase
